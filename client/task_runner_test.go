@@ -99,7 +99,7 @@ func TestTaskRunner_Destroy(t *testing.T) {
 	defer tr.ctx.AllocDir.Destroy()
 
 	// Change command to ensure we run for a bit
-	tr.task.Config["command"] = "/bin/sleep"
+	tr.task.Config["command"] = "sleep"
 	tr.task.Config["args"] = "10"
 	go tr.Run()
 
@@ -134,7 +134,7 @@ func TestTaskRunner_Update(t *testing.T) {
 	_, tr := testTaskRunner()
 
 	// Change command to ensure we run for a bit
-	tr.task.Config["command"] = "/bin/sleep"
+	tr.task.Config["command"] = "sleep"
 	tr.task.Config["args"] = "10"
 	go tr.Run()
 	defer tr.Destroy()
@@ -163,7 +163,7 @@ func TestTaskRunner_SaveRestoreState(t *testing.T) {
 	upd, tr := testTaskRunner()
 
 	// Change command to ensure we run for a bit
-	tr.task.Config["command"] = "/bin/sleep"
+	tr.task.Config["command"] = "sleep"
 	tr.task.Config["args"] = "10"
 	go tr.Run()
 	defer tr.Destroy()

@@ -339,7 +339,7 @@ func TestClient_SaveRestoreState(t *testing.T) {
 	alloc1 := mock.Alloc()
 	alloc1.NodeID = c1.Node().ID
 	task := alloc1.Job.TaskGroups[0].Tasks[0]
-	task.Config["command"] = "/bin/sleep"
+	task.Config["command"] = "sleep"
 	task.Config["args"] = "10"
 
 	state := s1.State()

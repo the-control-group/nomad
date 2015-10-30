@@ -47,7 +47,7 @@ To run a binary present on the Node:
 
 ```
   config {
-    command = "/bin/sleep"
+    command = "sleep"
     args = 1
   }
 ```

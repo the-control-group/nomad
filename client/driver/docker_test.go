@@ -210,7 +210,7 @@ func TestDockerDriver_Start_Kill_Wait(t *testing.T) {
 		Name: "redis-demo",
 		Config: map[string]string{
 			"image":   "redis",
-			"command": "/bin/sleep",
+			"command": "sleep",
 			"args":    "10",
 		},
 		Resources: basicResources,

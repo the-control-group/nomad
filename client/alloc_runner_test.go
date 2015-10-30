@@ -58,7 +58,7 @@ func TestAllocRunner_Destroy(t *testing.T) {
 
 	// Ensure task takes some time
 	task := ar.alloc.Job.TaskGroups[0].Tasks[0]
-	task.Config["command"] = "/bin/sleep"
+	task.Config["command"] = "sleep"
 	task.Config["args"] = "10"
 	go ar.Run()
 	start := time.Now()
@@ -90,7 +90,7 @@ func TestAllocRunner_Update(t *testing.T) {
 
 	// Ensure task takes some time
 	task := ar.alloc.Job.TaskGroups[0].Tasks[0]
-	task.Config["command"] = "/bin/sleep"
+	task.Config["command"] = "sleep"
 	task.Config["args"] = "10"
 	go ar.Run()
 	defer ar.Destroy()
@@ -127,7 +127,7 @@ func TestAllocRunner_SaveRestoreState(t *testing.T) {
 
 	// Ensure task takes some time
 	task := ar.alloc.Job.TaskGroups[0].Tasks[0]
-	task.Config["command"] = "/bin/sleep"
+	task.Config["command"] = "sleep"
 	task.Config["args"] = "10"
 	go ar.Run()
 	defer ar.Destroy()

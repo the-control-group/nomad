@@ -52,7 +52,7 @@ func TestRawExecDriver_StartOpen_Wait(t *testing.T) {
 	task := &structs.Task{
 		Name: "sleep",
 		Config: map[string]string{
-			"command": "/bin/sleep",
+			"command": "sleep",
 			"args":    "1",
 		},
 	}
@@ -160,7 +160,7 @@ func TestRawExecDriver_Start_Artifact_expanded(t *testing.T) {
 		Config: map[string]string{
 			"artifact_source": fmt.Sprintf("https://dl.dropboxusercontent.com/u/47675/jar_thing/%s", file),
 			"command":         "/bin/bash",
-			"args":            fmt.Sprintf("-c '/bin/sleep 1 && %s'", filepath.Join("$NOMAD_TASK_DIR", file)),
+			"args":            fmt.Sprintf("-c 'sleep 1 && %s'", filepath.Join("$NOMAD_TASK_DIR", file)),
 		},
 	}
 	driverCtx := testDriverContext(task.Name)
@@ -204,7 +204,7 @@ func TestRawExecDriver_Start_Wait(t *testing.T) {
 	task := &structs.Task{
 		Name: "sleep",
 		Config: map[string]string{
-			"command": "/bin/sleep",
+			"command": "sleep",
 			"args":    "1",
 		},
 	}
@@ -289,7 +289,7 @@ func TestRawExecDriver_Start_Kill_Wait(t *testing.T) {
 	task := &structs.Task{
 		Name: "sleep",
 		Config: map[string]string{
-			"command": "/bin/sleep",
+			"command": "sleep",
 			"args":    "1",
 		},
 	}
