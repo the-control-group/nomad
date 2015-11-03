@@ -71,6 +71,14 @@ func TestGetArtifact_fails(t *testing.T) {
 		Source, Checksum string
 	}{
 		{
+			"",
+			"sha256:66aa0f05fc0cfcf1e5ed8cc5307b5d",
+		},
+		{
+			"/u/47675/jar_thing/hi_darwin_amd64",
+			"sha256:66aa0f05fc0cfcf1e5ed8cc5307b5d",
+		},
+		{
 			"https://dl.dropboxusercontent.com/u/47675/jar_thing/hi_darwin_amd64",
 			"sha256:66aa0f05fc0cfcf1e5ed8cc5307b5d",
 		},

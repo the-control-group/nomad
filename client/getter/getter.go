@@ -14,22 +14,21 @@ import (
 )
 
 func GetArtifact(destDir, source, checksum string, logger *log.Logger) (string, error) {
-	// We use go-getter to support a variety of protocols, but need to change
-	// file permissions of the resulted download to be executable
-
+	if source == "" {
+		return "", fmt.Errorf("Source url is empty in Artifact Getter")
+	}
 	u, err := url.Parse(source)
 	if err != nil {
 		return "", err
 	}
 
-	// look for checksum, apply to URL
+	// if checksum is seperate, apply to source
 	if checksum != "" {
 		source = strings.Join([]string{source, fmt.Sprintf("checksum=%s", checksum)}, "?")
-		logger.Printf("[DEBUG] Applying checksum to Artifact Source URL, new url: %s", source)
+		logger.Printf("[DEBUG] client.getter: Applying checksum to Artifact Source URL, new url: %s", source)
 	}
 
-	artifactName := path.Base(u.Path)
-	artifactFile := filepath.Join(destDir, artifactName)
+	artifactFile := filepath.Join(destDir, path.Base(u.Path))
 	if err := gg.GetFile(artifactFile, source); err != nil {
 		return "", fmt.Errorf("Error downloading artifact: %s", err)
 	}
