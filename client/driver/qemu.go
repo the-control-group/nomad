@@ -104,7 +104,6 @@ func (d *QemuDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandle, 
 		d.logger,
 	)
 	if err != nil {
-		d.logger.Printf("\n---\nDEBUG\n---\n error here: %s\n---\n", err)
 		return nil, err
 	}
 
